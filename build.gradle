@@ -29,9 +29,7 @@ dependencies {
     implementation('com.fasterxml.jackson.core:jackson-annotations:2.11.2')
     implementation('org.springframework.data:spring-data-jpa')
     implementation('org.springframework:spring-jdbc')
-
-    runtime('mysql:mysql-connector-java')
-
+    implementation('mysql:mysql-connector-java')
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
