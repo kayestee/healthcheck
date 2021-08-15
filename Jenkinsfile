@@ -9,8 +9,8 @@ pipeline {
     stage('Build') {
       steps {
         sh 'gradlew build bootJar'
-        echo 'Build Docker image'
-        def app = docker.build "healthcheck:${env.BUILD_TAG}"
+        echo 'Build Docker image ${GIT_COMMIT}'
+        def app = docker.build "healthcheck:${GIT_COMMIT}"
         app.push('latest')
       }
     }
