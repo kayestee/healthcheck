@@ -12,7 +12,7 @@ pipeline {
         sh 'pwd'
         sh 'sh gradlew build bootJar'
 	script {
-		docker.withRegistry('${env.AWS_ECR_URL}','3834b8ec-9e15-4a0b-9e1e-3d70af9b4bcf'){
+		docker.withRegistry('${env.AWS_ECR_URL}','5dd9b7e7-63e3-477f-9ad2-18bd9baa8dec'){
 			def app = docker.build("healthcheck:${GIT_COMMIT}")		  
 			app.push('latest') 
 		}
