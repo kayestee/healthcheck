@@ -15,7 +15,7 @@ pipeline {
 	script {
 		docker.withRegistry("${env.AWS_ECR_URL}","${env.AWS_ECR_CRED}"){
 			def app = docker.build("healthproject:healthcheck_${GIT_COMMIT}")		  
-			app.push('latest') 
+			app.push("healthcheck_${GIT_COMMIT}") 
 		}
 	}
     	}
