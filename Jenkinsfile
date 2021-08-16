@@ -10,7 +10,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'pwd'
-        sh 'gradlew build bootJar'
+        sh 'sh gradlew build bootJar'
         echo 'Build Docker image ${GIT_COMMIT}'
       }
     }
