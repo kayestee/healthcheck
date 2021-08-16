@@ -11,13 +11,15 @@ pipeline {
       steps {
         sh 'pwd'
         sh 'sh gradlew build bootJar'
-        echo 'Build Docker image ${GIT_COMMIT}'
-	      docker.withRegistry("${env.AWS_ECR_URL}"){
-		def app = docker.build('healthcheck:${GIT_COMMIT}')
-		app.push('latest') 
-	      }
-    }
+	script {
+		docker.withRegistry("${env.AWS_ECR_URL}"){
+			def app = docker.build("healthcheck:${GIT_COMMIT}")		  
+			app.push('latest') 
+		}
+	}
+    	}
     }
   }
   
 }
+	
