@@ -4,7 +4,7 @@ pipeline {
   }
   environment {
     AWS_ECR_REGION = 'us-east-2'
-    AWS_ECR_URL = 'https://097816535043.dkr.ecr.us-east-2.amazonaws.com/healthproject'
+    AWS_ECR_URL = 'https://097816535043.dkr.ecr.us-east-2.amazonaws.com'
     AWS_ECR_CRED = 'ecr:us-east-2:5dd9b7e7-63e3-477f-9ad2-18bd9baa8dec' 
  }
   stages {
@@ -14,7 +14,7 @@ pipeline {
         sh 'sh gradlew build bootJar'
 	script {
 		docker.withRegistry("${env.AWS_ECR_URL}","${env.AWS_ECR_CRED}"){
-			def app = docker.build("healthcheck:${GIT_COMMIT}")		  
+			def app = docker.build("healthproject:healthcheck_${GIT_COMMIT}")		  
 			app.push('latest') 
 		}
 	}
