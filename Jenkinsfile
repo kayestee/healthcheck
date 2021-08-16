@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    jenkinslave
+    lable 'jenkinslave'
   }
   environment {
     AWS_ECR_REGION = 'us-east-2'
