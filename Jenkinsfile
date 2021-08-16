@@ -14,8 +14,8 @@ pipeline {
         sh 'sh gradlew build bootJar'
 	script {
 		docker.withRegistry("${env.AWS_ECR_URL}","${env.AWS_ECR_CRED}"){
-			def app = docker.build("healthproject:healthcheck_${env.BUILD_NUMBER}")		  
-			app.push("healthcheck_${env.BUILD_NUMBER}") 
+			def app = docker.build("healthproject:healthcheck_${env.BUILD_NUMBER}")
+			app.push("healthcheck_${env.BUILD_NUMBER}")
 		}
 	}
     	}
